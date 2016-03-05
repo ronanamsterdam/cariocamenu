@@ -1,0 +1,18 @@
+CariocaMenu.swift
+	case LeftEdge = 0
+	case RightEdge = 1
+	case Top = 0
+	case Center = 1
+	case Bottom = 2
+	case None = 0
+	case Vertical = 1
+	case VerticalAndHorizontal = 2
+	@objc public protocol CariocaMenuDelegate
+	@objc public protocol CariocaMenuDataSource
+	public class CariocaMenu : NSObject, UIGestureRecognizerDelegate
+	var dataSource:CariocaMenuDataSource
+	weak var delegate:CariocaMenuDelegate?
+	public var openingEdge:CariocaMenuEdge = .LeftEdge
+	class CariocaMenuIndicatorView : UIView
+	required init?(coder aDecoder: NSCoder)
+	override func drawRect(frame: CGRect)
