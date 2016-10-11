@@ -37,7 +37,7 @@ class DemoWebViewController: UIViewController, UIWebViewDelegate{
         loader.hidden = true
     }
 
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?){
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError){
         webview.scrollView.scrollEnabled = false
         loader.stopAnimating()
         loader.hidden = true
