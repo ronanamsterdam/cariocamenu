@@ -180,7 +180,7 @@ open class CariocaMenu : NSObject, UIGestureRecognizerDelegate {
     ///The main view of the menu. Will contain the blur effect view, and the menu view. Will match the hostView's frame with AutoLayout constraints.
     fileprivate var containerView = UIView()
     ///The view in which containerView will be added as a subview.
-    fileprivate weak var hostView:UIView?
+    open weak var hostView:UIView?
     fileprivate var menuView:UIView
     
     fileprivate var menuTopEdgeConstraint:NSLayoutConstraint?
