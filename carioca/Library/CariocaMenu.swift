@@ -784,7 +784,28 @@ class CariocaMenuIndicatorView : UIView{
         imageView = UIImageView()
         self.size = size
         self.shapeColor = shapeColor
-        super.init(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        
+        super.init(effect: blurEffect)
+        
+        self.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        
+        let maskLayer = CAShapeLayer()
+        
+        let path = self.getBlurShapeCgPath(self.frame);
+        
+        maskLayer.path = path.cgPath;
+        maskLayer.fillRule = kCAFillRuleEvenOdd
+        
+        let maskView = UIView(frame: self.frame)
+        maskView.backgroundColor = UIColor.black
+        maskView.layer.mask = maskLayer
+        
+        self.backgroundColor = UIColor.clear
+        
+        self.mask = maskView
+        
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor.clear
     }
@@ -808,7 +829,7 @@ class CariocaMenuIndicatorView : UIView{
     fileprivate var imageView:UIImageView
     
     ///Drawing of the indicator. The shape was drawed using PaintCode
-    override func draw(_ frame: CGRect) {
+    func getBlurShapeCgPath(_ frame: CGRect) -> UIBezierPath {
         
         //This shape was drawed with PaintCode App
         let ovalPath = UIBezierPath()
@@ -834,6 +855,8 @@ class CariocaMenuIndicatorView : UIView{
         ovalPath.close()
         shapeColor.setFill()
         ovalPath.fill()
+        
+        return ovalPath;
     }
     
     //MARK: - Indicator methods
