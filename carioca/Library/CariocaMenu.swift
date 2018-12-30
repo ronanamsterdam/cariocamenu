@@ -769,7 +769,7 @@ open class CariocaMenu : NSObject, UIGestureRecognizerDelegate {
 
 //MARK: - IndicatorView Class
 ///The indicators contained into the menu (one on the left, one on the right)
-class CariocaMenuIndicatorView : UIView{
+class CariocaMenuIndicatorView : UIVisualEffectView{
     
     /**
         Initializes an indicator for the menu
@@ -796,18 +796,12 @@ class CariocaMenuIndicatorView : UIView{
         let path = self.getBlurShapeCgPath(self.frame);
         
         maskLayer.path = path.cgPath;
-        maskLayer.fillRule = kCAFillRuleEvenOdd
-        
-        let maskView = UIView(frame: self.frame)
-        maskView.backgroundColor = UIColor.black
-        maskView.layer.mask = maskLayer
         
         self.backgroundColor = UIColor.clear
         
-        self.mask = maskView
+        self.layer.mask = maskLayer
         
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = UIColor.clear
     }
     
     ///Don't know the utility of this code, but seems to be required
