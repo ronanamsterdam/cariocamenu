@@ -885,7 +885,7 @@ class CariocaMenuIndicatorView : UIVisualEffectView{
         //add Icon imageView
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(imageView)
+        self.contentView.addSubview(imageView)
         
         //constraints for imageView
         attrSideEdge = (edge == .right) ? .leading : .trailing
